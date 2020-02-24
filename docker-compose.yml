@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  node-app:
+    build: .
+    restart: unless-stopped
+#    depends_on:
+#      - redis-server
+    ports:
+      - 8080:8080
+
+  redis-server:
+    image: redis
+#    links:
+#      -node-app
