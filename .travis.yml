@@ -8,3 +8,15 @@ before_install:
 script:
   - docker run -e CI=true kuzmint/docker-guide npm run test
 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-guide"
+  env: "DockerGuide-env"
+  bucket: "elasticbeanstalk-us-west-2-785908204738"
+  bucket_path: "docker-guide"
+  on:
+    branch: master
+#  edge: true
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
